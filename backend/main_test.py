@@ -1,4 +1,4 @@
-# Copyright 2015 Google Inc.
+# Copyright 2016 Google Inc. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,18 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import sys
+sys.path.append('./libs')
+import webtest
 
-# This file specifies your Python application's runtime configuration.
-# See https://cloud.google.com/appengine/docs/managed-vms/python/runtime
-# for details.
+import main
 
-# [START runtime]
-runtime: python27
-api_version: 1
-threadsafe: yes
 
-handlers:
-- url: /.*
-  script: main.app
-  secure: always
-# [END runtime]
+def test_get():
+    app = webtest.TestApp(main.app)
+
+    response = app.get('/')
+
+    assert response.status_int == 200
+    print response.status
+    assert response.body == 'Hello, World!'
+    print response.body
+    
+test_get()

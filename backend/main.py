@@ -1,4 +1,4 @@
-# Copyright 2015 Google Inc.
+# Copyright 2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# [START app]
 import webapp2
 import url_router
 
-app = webapp2.WSGIApplication([(url, endpoint) for url, endpoint in url_router.route.iteritems()], debug=False)
+
+class MainPage(webapp2.RequestHandler):
+	def get(self):
+		self.response.headers['Content-Type'] = 'text/plain'
+		self.response.write('Hello, World!')
+
+
+list_all_routes = [('/', MainPage)] + [(route, url_router.route[route]) for route in url_router.route]
+
+app = webapp2.WSGIApplication(list_all_routes, debug=True)
