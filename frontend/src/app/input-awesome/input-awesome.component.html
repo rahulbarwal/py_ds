@@ -1,6 +1,10 @@
 <main>
-    <textarea placeholder="What thing you want to remember from today"></textarea>
-    <!-- progress happinnes index -->
-    <input placeholder=" add tags">
-    <button >submit</button>
-  </main>
+  <textarea placeholder="What thing you want to remember from today"></textarea>
+  <!-- progress happinnes index -->
+  <input placeholder=" add tags">
+  <button (click)="on_submit()">submit</button>
+  <br>
+  <pre *ngIf="data">
+      {{data.name}}
+    </pre>
+</main>
