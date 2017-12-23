@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { InputAwesomeComponent } from './input-awesome/input-awesome.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DatasourceService } from './services/datasource.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,11 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
+    HttpClientModule, // include it after BrowserModule
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DatasourceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
