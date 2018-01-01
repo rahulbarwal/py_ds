@@ -17,9 +17,9 @@ import url_router
 
 
 class MainPage(webapp2.RequestHandler):
-	def get(self):
-		self.response.headers['Content-Type'] = 'text/plain'
-		self.response.write('Hello, World!')
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.write('Hello, World!')
 
 
 list_all_routes = [('/', MainPage)] + [(route, url_router.route[route]) for route in url_router.route]

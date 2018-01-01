@@ -1,3 +1,11 @@
-<p>
-  home works!
-</p>
+<section *ngIf='life_events'>
+  <article *ngFor='let event of life_events'>
+    Event: {{event.event_detail}}
+    <br>
+    Added: {{event.date}}
+    <br>
+    Public: {{event.public}}
+    <br>
+    <hr>
+  </article>
+</section>

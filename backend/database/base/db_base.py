@@ -2,4 +2,6 @@ from google.appengine.ext import ndb
 
 
 class DataStore(ndb.Model):
-	pass
+
+    def save_entity(self):
+        return self.put()

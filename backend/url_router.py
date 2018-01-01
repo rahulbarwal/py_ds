@@ -1,5 +1,5 @@
-from endpoints import life_event
+from endpoints import ep_life_event
 
 route = {
-	'/life-event': life_event
+    '/life-event': ep_life_event.EPLifeEvent
 }

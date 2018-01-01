@@ -1,1 +1,1 @@
-webapp2, webtest
+webtest

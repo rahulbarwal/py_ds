@@ -10,22 +10,23 @@ import { EventsService } from '../services/events.service';
 export class InputAwesomeComponent implements OnInit {
 
   data: any;
+  event_detail: string;
+  public = false;
+
   constructor(
     private _ep_events: EventsService
   ) { }
 
   ngOnInit() {
-    this._ep_events.get_life_event({}, (response) => {
-      console.log(response);
-    },
-    (code) => {
-
-    });
   }
 
   on_submit() {
+    this.event_detail = 'I met geeta today';
     this._ep_events.save_life_event(
-      {},
+      {
+        event_detail : this.event_detail,
+        public: this.public
+      },
       (response) => {
         this.data = response;
       },
